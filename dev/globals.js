@@ -99,10 +99,11 @@ function str2ab(str) {
 
     var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
     var bufView = new Uint16Array(buf);
-    for (var i = 0, strLen = str.length; i < strLen; i++) {
-        bufView[i] = str.charCodeAt(i);
+    var bufRes = [];
+    for (var i = 0, strLen = bufView.length; i < strLen; i++) {
+        bufRes[i] = str.charCodeAt(i);
     }
-    return buf;
+    return bufRes;
 }
 
 function swap(arr) {
@@ -173,6 +174,9 @@ function getLength(obj) {
 // Get HTMLAudioElement/HTMLVideoElement accordingly
 
 function createMediaElement(stream, session) {
+    if (!stream) throw 'stream is missing';
+    if (!session) throw 'session is missing';
+    
     var mediaElement = document.createElement(stream.isAudio ? 'audio' : 'video');
     mediaElement.id = stream.streamid;
 

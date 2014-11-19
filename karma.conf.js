@@ -5,8 +5,10 @@ module.exports = function(config) {
     frameworks: ['mocha','chai'],
 
     files: [
-      './RTCMultiConnection.js',
+      // './RTCMultiConnection.js',
+      './dev/globals.js',
       'test/**/*.js'
+      
     ],
 
     exclude: [],
@@ -15,7 +17,7 @@ module.exports = function(config) {
     browsers: ['Chrome'],
     reporters: ['progress', 'coverage'],
     preprocessors: {
-      './RTCMultiConnection.js': ['coverage']
+      './dev/globals.js': ['coverage']
     },
     coverageReporter: {
       type: 'html',
