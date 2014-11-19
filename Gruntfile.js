@@ -7,6 +7,8 @@ module.exports = function(grunt) {
         scope: 'devDependencies'
     });
 
+
+
     // configure project
     grunt.initConfig({
         // make node configurations available
@@ -114,6 +116,12 @@ module.exports = function(grunt) {
                 pushTo: 'upstream',
                 gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
             }
+        },
+        karma: {
+          unit: {
+            configFile: 'karma.conf.js',
+            singleRun: true
+          }
         }
     });
 
@@ -122,4 +130,5 @@ module.exports = function(grunt) {
     // set default tasks to run when grunt is called without parameters
     // http://gruntjs.com/api/grunt.task
     grunt.registerTask('default', ['concat', 'jsbeautifier', 'htmlhint', 'jshint', 'uglify']);
+    grunt.registerTask('test',['karma']);
 };
